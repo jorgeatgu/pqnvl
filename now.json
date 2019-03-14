@@ -1,0 +1,11 @@
+{
+    "name": "cambiar",
+    "env":
+    {
+        "NODE_ENV": "production"
+    },
+    "alias": [
+        "cambiar.es"
+    ],
+    "type": "static"
+}
