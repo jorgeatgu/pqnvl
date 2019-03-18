@@ -1,1 +1,8 @@
 @import '_variables';
+@import '_header';
+@import '_partidos';
+
+body {
+    margin: 0;
+    line-height: 1.5;
+}

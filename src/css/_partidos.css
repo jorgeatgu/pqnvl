@@ -1,0 +1,166 @@
+.container-political-chart {
+    max-width: 65rem;
+    margin: 0 auto;
+}
+
+.temas {
+    display: inline-block;
+}
+
+.tema-label {
+    font-size: .75rem;
+    font-family: var(--roboto);
+    font-weight: bold;
+    margin-bottom: 0;
+}
+
+.Calidad {
+    rect {
+        fill: #069668;
+    }
+}
+
+.Cambio {
+    rect {
+        fill: #6ad5eb;
+    }
+}
+
+.Conflictos {
+    rect {
+        fill: #3e727b;
+    }
+}
+
+.Desarrollo {
+    rect {
+        fill: #39eec0;
+    }
+}
+
+.Educación {
+    rect {
+        fill: #4346ab;
+    }
+}
+
+.Empleo {
+    rect {
+        fill: #7c89e9;
+    }
+}
+
+.Fiscalidad {
+    rect {
+        fill: #f597fa;
+    }
+}
+
+.Género {
+    rect {
+        fill: #ca35b4;
+    }
+}
+
+.Infancia {
+    rect {
+        fill: #6c3357;
+    }
+}
+
+.Protección {
+    rect {
+        fill: #e4ccf1;
+    }
+}
+
+.Sanidad {
+    rect {
+        fill: #6118df;
+    }
+}
+
+.circle-political {
+    width: 5rem;
+    height: 4rem;
+    display: inline-block;
+    vertical-align: middle;
+    &:after {
+        content: '';
+        height: 4rem;
+        width: .5rem;
+        display: inline-block;
+        background-color: #f1f1f1;
+        position: relative;
+        left: .5rem;
+    }
+    &.pp-color {
+        background-color: var(--pp);
+    }
+    &.psoe-color {
+        background-color: var(--psoe);
+    }
+    &.up-color {
+        background-color: var(--up);
+    }
+    &.cs-color {
+        background-color: var(--cs);
+    }
+    &.vox-color {
+        background-color: var(--vox);
+    }
+}
+
+.title-political {
+    font-size: 2rem;
+    font-family: var(--title);
+    padding: 1rem 1rem 1rem 0;
+    width: auto;
+    display: inline-block;
+    vertical-align: middle;
+    margin: 0;
+    z-index: 2;
+    position: relative;
+    left: -3rem;
+    letter-spacing: 1px;
+}
+
+.text-political {
+    font-size: 1rem;
+    font-family: var(--text);
+    font-weight: normal;
+    display: block;
+    color: var(--black);
+    vertical-align: top;
+    max-width: 30rem;
+    margin-top: .5rem;
+    z-index: 2;
+    position: relative;
+    &:not(:last-child) {
+        margin-right: 1rem;
+    }
+}
+
+.grid-charts {
+    grid-template-columns: 100%;
+    display: grid;
+    max-width: 58rem;
+    margin-top: 0;
+    grid-column-gap: 3rem;
+    grid-row-gap: 3rem;
+    justify-items: stretch;
+    align-items: stretch;
+}
+
+.container-political {
+    min-height: 100vh;
+    position: relative;
+}
+
+@media only screen and (min-width: 64em) {
+
+    .grid-charts {
+        grid-template-columns: 33% 33% 33%;
+    }
+
+}
