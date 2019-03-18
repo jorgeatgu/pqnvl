@@ -14,7 +14,6 @@ function forceLayout() {
         '#812050',
         '#2eece6',
     ]);
-    let dataz;
 
     function updateChart(dataz) {
         const w = chart.node().offsetWidth;
@@ -29,7 +28,7 @@ function forceLayout() {
             .append('circle')
             .attr('class', 'circle')
             .attr('r', (d) => d.total * 10)
-            .attr('fill', (d) => color(d.tema))
+            .attr('fill', (d) => color(d.nombre))
             .attr('cx', (d) => d.x)
             .attr('cy', (d) => d.y);
 
@@ -61,12 +60,12 @@ function forceLayout() {
                 node.attr('cx', ({ x }) => x).attr('cy', ({ y }) => y)
             );
 
-        const legendData = d3.group(dataz.map((d) => d.tema));
+        const legendData = d3.group(dataz.map((d) => d.nombre));
         let unique = legendData.filter(
             (elem, pos) => legendData.indexOf(elem) === pos
         );
 
-        unique = unique.reverse((d) => d.tema);
+        unique = unique.reverse((d) => d.nombre);
 
         const legend = svg
             .selectAll('.legend')
@@ -99,7 +98,7 @@ function forceLayout() {
             } else {
                 dataz = data;
                 dataz.forEach((d) => {
-                    d.tema = d.tema;
+                    d.nombre = d.nombre;
                     d.total = +d.total;
                     d.pp = +d.pp;
                     d.psoe = +d.psoe;
@@ -120,4 +119,99 @@ function forceLayout() {
     loadData();
 }
 
+function grid(csvFile, element) {
+    const chart = d3.select(`.grid-chart-${element}`);
+    const gridCharts = d3.select('.grid-charts');
+    const gridWidth = 16;
+    const gridHeight = 8;
+    const layout = d3_iconarray
+        .layout()
+        .width(gridWidth)
+        .height(gridHeight);
+    const radius = 6;
+    const margin = {
+        top: radius,
+        right: radius,
+        bottom: radius,
+        left: radius,
+    };
+    const h = 24;
+    const w = gridCharts.node().offsetWidth / 3;
+    const scale = d3
+        .scaleLinear()
+        .range([0, w - (margin.left + margin.right)])
+        .domain([0, gridWidth]);
+
+    function updateChart(dataz) {
+        chart
+            .selectAll('.temas')
+            .data(dataz)
+            .enter()
+            .append('div')
+            .attr('class', 'temas')
+            .call(arrayBars, true);
+
+        function arrayBars(parent, widthFirst) {
+            layout.widthFirst(widthFirst);
+
+            parent
+                .append('h3')
+                .attr('class', 'tema-label')
+                .html((d) => d.nombre);
+
+            parent
+                .append('svg')
+                .attr('width', w)
+                .attr('height', h)
+                .append('g')
+                .attr('transform', `translate(0,${margin.top})`)
+                .attr('class', (d) => d.nombre)
+                .selectAll('rect')
+                .data((d) => layout(d3.range(0, d.total, 1)))
+                .enter()
+                .append('rect')
+                .attr('x', (d) => scale(d.position.x))
+                .attr('y', (d) => scale(d.position.y))
+                .attr('rx', 2.5)
+                .attr('ry', 2.5)
+                .attr('class', (d) => d.nombre)
+                .attr('width', radius * 2.5)
+                .attr('height', radius * 2.5);
+        }
+    }
+
+    function loadData() {
+        d3.csv(csvFile, (error, data) => {
+            if (error) {
+                console.log(error);
+            } else {
+                dataz = data;
+                dataz.forEach((d) => {
+                    d.nombre = d.nombre;
+                    d.total = +d.total;
+                });
+                updateChart(dataz);
+            }
+        });
+    }
+
+    const resize = () => {
+        updateChart(dataz);
+    };
+
+    window.addEventListener('resize', resize);
+
+    loadData();
+}
+
 forceLayout();
+
+const political = [
+    ['csv/partido-popular/partido-popular-total-propuestas.csv', 'pp'],
+    ['csv/partido-socialista/partido-socialista-total-propuestas.csv', 'psoe'],
+    ['csv/unidas-podemos/unidas-podemos-total-propuestas.csv', 'up'],
+    ['csv/ciudadanos/ciudadanos-total-propuestas.csv', 'cs'],
+    ['csv/vox/vox-total-propuestas.csv', 'vox'],
+];
+
+for (const args of political) grid(...args);
