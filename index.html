@@ -1,42 +1,101 @@
 <!DOCTYPE html>
 <html lang="es">
-    <head>
-        <meta charset="utf-8">
-        <meta http-equiv="X-UA-Compatible" content="IE=edge">
-        <title></title>
-        <meta name="description" content="">
-        <meta name="viewport" content="width=device-width, initial-scale=1">
-        <link rel="stylesheet" type="text/css" href="css/styles.css">
-    </head>
-    <body>
-        <header>
-            <nav></nav>
-        </header>
 
-        <section class="tittle">
-            <span class="tittle-character">P</span>
-            <span class="tittle-character">Q</span>
-            <span class="tittle-character">N</span>
-            <span class="tittle-character">V</span>
-            <span class="tittle-character">L</span>
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title></title>
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" type="text/css" href="css/styles.css">
+    <link href="https://fonts.googleapis.com/css?family=Roboto+Condensed:400,700|Adamina|Domine" rel="stylesheet">
+</head>
+
+<body>
+    <header class="column flat-retro">
+        <img src="img/header.jpg"/>
+            <p class="header-paragraph">Una visualización de datos con todos los datos obtenidos por <a href="http://poletika.org">Poletika</a> en <a href="http://poletika.org/vigila/que-dijeron">candi-DATOS</a>.</p>
+    </header>
+    <div class="container-text">
+        <p class="title">¿Que es candi-DATOS?</p>
+        <p class="paragraph">Es una herramienta que nace de la mano de la plataforma Polétika.org, con el objetivo de suministrar información acerca de los compromisos políticos de los cinco candidatos a las Elecciones Generales en las once temáticas de Polétika: calidad democrática, cambio climático, conflictos y migraciones, desarrollo, educación, empleo, fiscalidad, género, infancia, protección social y sanidad. </p>
+        <a href="https://medium.com/ciecode/candi-datos-nueva-aplicación-de-vigilancia-electoral-a5cc728c3c0c" class="link">Artículo de Poletika</a>
+    </div>
+    <section class="container-political">
+        <h4 class="title-political"></h4>
+        <section class="container-political-chart">
+            <article id="force-maxima" class="chart-force">
+                <svg class="charts">
+                </svg>
+            </article>
         </section>
-
-
-        <section class="container-political">
-            <h4 class="tittle-political"></h4>
-            <section class="temperature-container-full">
-                <article id="force-maxima" class="chart-force">
-                    <svg class="charts">
-                    </svg>
-                </article>
-            </section>
+    </section>
+    <section class="container-political">
+        <section class="container-political-chart">
+            <div class="container-title">
+                <div class="circle-political pp-color"></div>
+                <h4 class="title-political">Partido Popular</h4>
+            </div>
+            <p class="text-political">¿Sabes a qué se compromete el candidato del Partido Popular en la lucha contra la pobreza, desigualdad y el cambio climático?</p>
+            <p class="text-political">A continuación una gráfica para cada una de las temáticas de Poletika. Haz click en cada uno de los círculos para obtener más información sobre cada una de las promesas.</p>
+            <article id="force-maxima" class="grid-charts grid-chart-pp">
+            </article>
         </section>
+    </section>
+    <section class="container-political">
+        <section class="container-political-chart">
+            <div class="container-title">
+                <div class="circle-political psoe-color"></div>
+                <h4 class="title-political">Partido Socialista Obrero Español</h4>
+            </div>
+            <p class="text-political">¿Sabes a qué se compromete el candidato del Partido Socialista en la lucha contra la pobreza, desigualdad y el cambio climático?</p>
+            <p class="text-political">A continuación una gráfica para cada una de las temáticas de Poletika. Haz click en cada uno de los círculos para obtener más información sobre cada una de las promesas.</p>
+            <article id="force-maxima" class="grid-charts grid-chart-psoe">
+            </article>
+        </section>
+    </section>
+    <section class="container-political">
+        <section class="container-political-chart">
+            <div class="container-title">
+                <div class="circle-political up-color"></div>
+                <h4 class="title-political">Unidas Podemos</h4>
+            </div>
+            <p class="text-political">¿Sabes a qué se compromete el candidato de Unidas Podemos en la lucha contra la pobreza, desigualdad y el cambio climático?</p>
+            <p class="text-political">A continuación una gráfica para cada una de las temáticas de Poletika. Haz click en cada uno de los círculos para obtener más información sobre cada una de las promesas.</p>
+            <article id="force-maxima" class="grid-charts grid-chart-up">
+            </article>
+        </section>
+    </section>
+    <section class="container-political">
+        <section class="container-political-chart">
+            <div class="container-title">
+                <div class="circle-political cs-color"></div>
+                <h4 class="title-political">Ciudadanos</h4>
+            </div>
+            <p class="text-political">¿Sabes a qué se compromete el candidato de Ciudadanos en la lucha contra la pobreza, desigualdad y el cambio climático?</p>
+            <p class="text-political">A continuación una gráfica para cada una de las temáticas de Poletika. Haz click en cada uno de los círculos para obtener más información sobre cada una de las promesas.</p>
+            <article id="force-maxima" class="grid-charts grid-chart-cs">
+            </article>
+        </section>
+    </section>
+    <section class="container-political">
+        <section class="container-political-chart">
+            <div class="container-title">
+                <div class="circle-political vox-color"></div>
+                <h4 class="title-political">Vox</h4>
+            </div>
+            <p class="text-political">¿Sabes a qué se compromete el candidato de Ciudadanos en la lucha contra la pobreza, desigualdad y el cambio climático?</p>
+            <p class="text-political">A continuación una gráfica para cada una de las temáticas de Poletika. Haz click en cada uno de los círculos para obtener más información sobre cada una de las promesas.</p>
+            <article id="force-maxima" class="grid-charts grid-chart-cs">
+            </article>
+        </section>
+    </section>
 
+    <footer>
+    </footer>
+    <script src="js/d3.min.js"></script>
+    <script src="js/d3-iconarray.min.js"></script>
+    <script src="js/index.js"></script>
+</body>
 
-        <footer>
-
-        </footer>
-        <script src="js/d3.min.js"></script>
-        <script src="js/index.js"></script>
-    </body>
 </html>

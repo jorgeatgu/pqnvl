@@ -1,11 +1,8 @@
 {
-    "name": "cambiar",
+    "name": "pqnvl",
     "env":
     {
         "NODE_ENV": "production"
     },
-    "alias": [
-        "cambiar.es"
-    ],
     "type": "static"
 }
