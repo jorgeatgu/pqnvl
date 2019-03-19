@@ -119,10 +119,10 @@ function forceLayout() {
     loadData();
 }
 
-function grid(csvFile, element) {
+function grid(jsonFile, element) {
     const chart = d3.select(`.grid-chart-${element}`);
     const gridCharts = d3.select('.grid-charts');
-    const gridWidth = 16;
+    const gridWidth = 12;
     const gridHeight = 8;
     const layout = d3_iconarray
         .layout()
@@ -135,12 +135,18 @@ function grid(csvFile, element) {
         bottom: radius,
         left: radius,
     };
-    const h = 24;
+    const h = 48;
     const w = gridCharts.node().offsetWidth / 3;
     const scale = d3
         .scaleLinear()
         .range([0, w - (margin.left + margin.right)])
         .domain([0, gridWidth]);
+
+    const tooltip = d3
+        .select(`.container-political-${element}`)
+        .append('div')
+        .attr('class', 'tooltip')
+        .style('opacity', 0);
 
     function updateChart(dataz) {
         chart
@@ -148,16 +154,15 @@ function grid(csvFile, element) {
             .data(dataz)
             .enter()
             .append('div')
-            .attr('class', 'temas')
+            .attr('class', (d) => d.key)
             .call(arrayBars, true);
 
         function arrayBars(parent, widthFirst) {
             layout.widthFirst(widthFirst);
-
             parent
                 .append('h3')
                 .attr('class', 'tema-label')
-                .html((d) => d.nombre);
+                .html((d) => d.key);
 
             parent
                 .append('svg')
@@ -165,33 +170,60 @@ function grid(csvFile, element) {
                 .attr('height', h)
                 .append('g')
                 .attr('transform', `translate(0,${margin.top})`)
-                .attr('class', (d) => d.nombre)
+                .attr('class', 'temas')
                 .selectAll('rect')
-                .data((d) => layout(d3.range(0, d.total, 1)))
+                .data((d) => layout(d3.range(0, d.values.length, 1)))
                 .enter()
                 .append('rect')
+                .attr('class', 'rects')
                 .attr('x', (d) => scale(d.position.x))
                 .attr('y', (d) => scale(d.position.y))
                 .attr('rx', 2.5)
                 .attr('ry', 2.5)
-                .attr('class', (d) => d.nombre)
+                .attr('fill', '#780448')
                 .attr('width', radius * 2.5)
-                .attr('height', radius * 2.5);
+                .attr('height', radius * 2.5)
+                .data((d) => d.values)
+                .on('click', (d) => {
+                    tooltip
+                        .attr('class', `tooltip ${d.party}`)
+                        .style('opacity', 0)
+                        .transition()
+                        .duration(300)
+                        .style('opacity', 1);
+                    tooltip.html(
+                        `<h4 class="tooltip-party">${d.party}</h4>
+                            <span class="tooltip-candidate">${d.candidato}</span>
+                            <span class="tooltip-date">${d.date}</span>
+                            <p class="tooltip-text">${d.texto}</p>
+                            <a href="${
+                                d.fuente
+                            }" class="tooltip-source">Fuente</span>
+                            `
+                    );
+                });
         }
     }
 
     function loadData() {
-        d3.csv(csvFile, (error, data) => {
-            if (error) {
-                console.log(error);
-            } else {
-                dataz = data;
-                dataz.forEach((d) => {
-                    d.nombre = d.nombre;
-                    d.total = +d.total;
-                });
-                updateChart(dataz);
-            }
+        d3.json(jsonFile).then((data) => {
+            const dataz = data;
+
+            dataz.forEach((d) => {
+                d.partido = d.party;
+                d.candidato = d.candidate;
+                d.propuesta = d.proposal;
+                d.fuente = d.source;
+                d.tema = d.topic;
+                d.texto = d.statement;
+            });
+
+            const topicCount = d3
+                .nest()
+                .key((d) => d.tema)
+                .entries(dataz);
+
+            updateChart(topicCount);
         });
     }
 
@@ -204,14 +236,16 @@ function grid(csvFile, element) {
     loadData();
 }
 
+grid();
+
 forceLayout();
 
 const political = [
-    ['csv/partido-popular/partido-popular-total-propuestas.csv', 'pp'],
-    ['csv/partido-socialista/partido-socialista-total-propuestas.csv', 'psoe'],
-    ['csv/unidas-podemos/unidas-podemos-total-propuestas.csv', 'up'],
-    ['csv/ciudadanos/ciudadanos-total-propuestas.csv', 'cs'],
-    ['csv/vox/vox-total-propuestas.csv', 'vox'],
+    ['csv/partido-popular/partido-popular.json', 'pp'],
+    ['csv/partido-socialista/partido-socialista.json', 'psoe'],
+    ['csv/unidas-podemos/unidas-podemos.json', 'up'],
+    ['csv/ciudadanos/ciudadanos.json', 'cs'],
+    /*['csv/vox/vox.json', 'vox'],*/
 ];
 
 for (const args of political) grid(...args);

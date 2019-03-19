@@ -1,6 +1,5 @@
 import 'd3-transition';
 import 'd3-drag';
-import 'd3-fetch';
 
 export {
     select, selectAll, mouse, event,
@@ -19,15 +18,19 @@ export {
 } from 'd3-array';
 
 export {
+    json,
+} from 'd3-fetch';
+
+export {
     line, curveCardinal, arc, curveLinear, area,
 } from 'd3-shape';
 
 export {
-    scaleTime, scaleLinear, scaleOrdinal, scaleBand
+    scaleTime, scaleLinear, scaleOrdinal, scaleBand,
 } from 'd3-scale';
 
 export {
-    axisBottom, axisLeft
+    axisBottom, axisLeft,
 } from 'd3-axis';
 
 export {
