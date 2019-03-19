@@ -1,6 +1,7 @@
 .container-political-chart {
     max-width: 65rem;
     margin: 0 auto;
+    position: relative;
 }
 
 .temas {
@@ -8,76 +9,10 @@
 }
 
 .tema-label {
-    font-size: .75rem;
+    font-size: 1rem;
     font-family: var(--roboto);
-    font-weight: bold;
+    font-weight: normal;
     margin-bottom: 0;
-}
-
-.Calidad {
-    rect {
-        fill: #069668;
-    }
-}
-
-.Cambio {
-    rect {
-        fill: #6ad5eb;
-    }
-}
-
-.Conflictos {
-    rect {
-        fill: #3e727b;
-    }
-}
-
-.Desarrollo {
-    rect {
-        fill: #39eec0;
-    }
-}
-
-.Educación {
-    rect {
-        fill: #4346ab;
-    }
-}
-
-.Empleo {
-    rect {
-        fill: #7c89e9;
-    }
-}
-
-.Fiscalidad {
-    rect {
-        fill: #f597fa;
-    }
-}
-
-.Género {
-    rect {
-        fill: #ca35b4;
-    }
-}
-
-.Infancia {
-    rect {
-        fill: #6c3357;
-    }
-}
-
-.Protección {
-    rect {
-        fill: #e4ccf1;
-    }
-}
-
-.Sanidad {
-    rect {
-        fill: #6118df;
-    }
 }
 
 .circle-political {
@@ -144,7 +79,7 @@
 .grid-charts {
     grid-template-columns: 100%;
     display: grid;
-    max-width: 58rem;
+    max-width: 45rem;
     margin-top: 0;
     grid-column-gap: 3rem;
     grid-row-gap: 3rem;
@@ -155,6 +90,72 @@
 .container-political {
     min-height: 100vh;
     position: relative;
+}
+
+.rects {
+    cursor: pointer;
+    transition: all ease-in 300ms;
+    &:hover {
+        height: 16px;
+        width: 16px;
+        fill: rgba(120, 4, 72, .7);
+    }
+}
+
+.tooltip {
+    position: absolute;
+    right: 0;
+    top: 15rem;
+    z-index: 2;
+    padding: .5rem .75rem;
+    background: var(--white);
+    border-bottom-right-radius: 4px;
+    border-bottom-left-radius: 4px;
+    width: 20rem;
+    box-shadow: 0 2px 9px 0 rgba(0, 0, 0, .2);
+    border-top: 5px solid;
+    p + p {
+        display: none;
+    }
+    &.Ciudadanos {
+        border-color: var(--cs);
+    }
+}
+
+.tooltip-party {
+    margin: 0;
+    font-size: 1.25rem;
+    font-family: var(--title);
+    color: var(--black);
+}
+
+.tooltip-candidate,
+.tooltip-date {
+    font-size: .75rem;
+    font-family: var(--roboto);
+    color: var(--black);
+    display: block;
+}
+
+.tooltip-source {
+    font-size: .75rem;
+    font-family: var(--roboto);
+    font-weight: bold;
+    display: block;
+}
+
+/* stylelint-disable */
+.tooltip-party {
+    font-weight: bold;
+}
+/* stylelint-enable */
+
+.tooltip-text {
+    font-size: .75rem;
+    font-family: var(--text);
+    color: var(--black);
+    margin: .5rem 0;
+
 }
 
 @media only screen and (min-width: 64em) {
