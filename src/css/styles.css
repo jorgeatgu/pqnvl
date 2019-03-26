@@ -1,6 +1,8 @@
 @import '_variables';
 @import '_header';
 @import '_partidos';
+@import '_proyectos';
+@import '_footer';
 
 body {
     margin: 0;

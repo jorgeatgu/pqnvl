@@ -1,7 +1,7 @@
 :root {
   --fontSystem: BlinkMacSystemFont, -apple-system, 'Segoe UI', 'Roboto', 'Oxygen', 'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue', Helvetica, sans-serif;
   --monospace: 'SFMono-Regular', Consolas, Menlo, Courier, monospace;
-  --title: 'Domine', serif;
+  --title: 'Playfair Display', serif;
   --text: 'Adamina', serif;
   --roboto: 'Roboto Condensed', sans-serif;
   --black: #111;
@@ -11,4 +11,12 @@
   --up: #673263;
   --cs: #f07a36;
   --vox: #69BA36;
+  --project1bg: #FEE1C2;
+  --project1txt: #952747;
+  --project2bg: #354A57;
+  --project2txt: #a5cf80;
+  --project3bg: #fff6cb;
+  --project3txt: #0e2153;
+  --project4bg: #798780;
+  --project4txt: #1a182a;
 }
