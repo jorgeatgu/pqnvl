@@ -22,14 +22,14 @@ function grid(jsonFile, element) {
             w = gridCharts.node().offsetWidth / 3;
             return {
                 gridWidth: gridWidth,
-                w: w
+                w: w,
             };
         } else {
             gridWidth = 20;
             w = gridCharts.node().offsetWidth;
             return {
                 gridWidth: gridWidth,
-                w: w
+                w: w,
             };
         }
     }
@@ -44,7 +44,7 @@ function grid(jsonFile, element) {
         top: radius,
         right: radius,
         bottom: radius,
-        left: radius
+        left: radius,
     };
     const h = 48;
     const scale = d3
@@ -119,10 +119,10 @@ function grid(jsonFile, element) {
                         .style('left', `${d3.event.pageX - 28}px`);
                     tooltip.select('.tooltip-close').on('click', () =>
                         tooltip
-                        .style('opacity', 0)
-                        .style('display', 'none')
-                        .transition()
-                        .duration(300)
+                            .style('opacity', 0)
+                            .style('display', 'none')
+                            .transition()
+                            .duration(300)
                     );
                 });
         }
