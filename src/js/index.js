@@ -165,8 +165,7 @@ const political = [
     ['csv/partido-socialista/partido-socialista.json', 'psoe'],
     ['csv/unidas-podemos/unidas-podemos.json', 'up'],
     ['csv/ciudadanos/ciudadanos.json', 'cs'],
-
-    /* ['csv/vox/vox.json', 'vox'], */
+    ['csv/vox/vox.json', 'vox']
 ];
 
 for (const args of political) grid(...args);
