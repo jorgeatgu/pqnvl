@@ -46,7 +46,7 @@ function grid(jsonFile, element) {
         bottom: radius,
         left: radius,
     };
-    const h = 48;
+    const h = 80;
     const scale = d3
         .scaleLinear()
         .range([0, w - (margin.left + margin.right)])
