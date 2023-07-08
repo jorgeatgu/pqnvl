@@ -69,7 +69,7 @@
     "prettier": "1.16.4",
     "rollup": "0.36",
     "rollup-plugin-node-resolve": "2",
-    "stylelint": "^9.10.1",
+    "stylelint": "^15.10.1",
     "uglify-es": "^3.3.9"
   }
 }
